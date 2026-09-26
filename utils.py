@@ -1,4 +1,4 @@
-
+import sys
 from pathlib import Path
 
 import duckdb
@@ -6,6 +6,14 @@ import joblib
 import pandas as pd
 import requests
 import streamlit as st
+
+# Backward compatibility monkey patch for scikit-learn unpickling across versions
+try:
+    import sklearn.compose._column_transformer as _ct
+    if not hasattr(_ct, '_RemainderColsList'):
+        _ct._RemainderColsList = type('_RemainderColsList', (list,), {})
+except Exception:
+    pass
 
 
 BASE_DIR = Path(__file__).resolve().parent
