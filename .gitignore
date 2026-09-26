@@ -1,0 +1,12 @@
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.streamlit/secrets.toml
+
+urbanpulse.db
+
+*.parquet
+!latest_demand_features.parquet
+
+.DS_Store
